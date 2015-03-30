@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D4_subreport2" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ec5d8f8e-2090-43ed-983f-9758eae58cd5">
+	<property name="ireport.zoom" value="1.8150000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from DECIDE_order where pos == 'Close' order by series ASC,trade_date ASC,long_short ASC,deal_price ASC;]]>
+	</queryString>
+	<field name="series" class="java.lang.Object"/>
+	<field name="buy_sell" class="java.lang.Object"/>
+	<field name="pos" class="java.lang.Object"/>
+	<field name="no_of_contract" class="java.lang.Object"/>
+	<field name="deal_price" class="java.lang.Object"/>
+	<field name="premium_amount" class="java.lang.Object"/>
+	<field name="brokerage_fee" class="java.lang.Object"/>
+	<field name="vat" class="java.lang.Object"/>
+	<field name="WH" class="java.lang.Object"/>
+	<field name="long" class="java.lang.Object"/>
+	<field name="short" class="java.lang.Object"/>
+	<field name="charge_amount" class="java.lang.Object"/>
+	<field name="trade_date" class="java.lang.Object"/>
+	<field name="future_realized_pl" class="java.lang.Object"/>
+	<field name="option_realized_pl" class="java.lang.Object"/>
+	<field name="long_short" class="java.lang.Object"/>
+	<field name="final_settlement_price" class="java.lang.Object"/>
+	<field name="settlement_amount" class="java.lang.Object"/>
+	<field name="settlement_date" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="dccea3f0-b55d-4914-b51d-73d631e82634" x="0" y="0" width="183" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Position Closing]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c2ae2556-8034-4883-9c88-f3cbd733965f" x="0" y="0" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Series]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5aec40d6-2d05-4179-81de-3480a1e9fe80" x="70" y="0" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trade Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2fd8a1f6-04cf-4572-8a97-86d265ea0d0f" x="160" y="0" width="51" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Long]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73234396-f14c-4b87-ba80-2ef9f1565099" x="211" y="0" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Short]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ff976c0-9bea-4702-ad3d-27000dcde18a" x="265" y="0" width="107" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Deal Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1bdb9ba-67cf-4577-b0d9-29b39f65ee8d" x="372" y="0" width="183" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Realized P&L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0dfc975-ba16-44b5-8b45-36af81afd498" x="372" y="10" width="95" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Future]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="329e8061-9176-4105-a904-29ddb2c2b455" x="467" y="10" width="88" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Options]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="35b0b244-d6f2-4154-b6eb-2ccbafd23b63" x="0" y="0" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{series}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ab2d78d6-cd95-46af-94a7-45068acfee26" x="70" y="0" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{trade_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a70e54cc-ca1f-490f-b8e8-e8a8491eda73" x="211" y="0" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{short}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f61b8388-92f0-4ac2-914c-b1da60af5fe7" x="160" y="0" width="51" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{long}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bd913ec1-7539-42fd-9ea2-c31c310e435a" x="265" y="0" width="107" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{deal_price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="32c736a4-2aa3-49bd-a1b9-0de1f4a722fb" x="265" y="0" width="107" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Total ::]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f60e514a-4f66-4fe9-a601-6b562e52fa3c" x="372" y="0" width="95" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{future_realized_pl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d39e1d91-5d21-46a1-bf6a-2fd77721a72f" x="467" y="0" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{option_realized_pl}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

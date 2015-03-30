@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D1_subreport5" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f9a9d134-6fc3-42a1-838d-960880c75511">
+	<property name="ireport.zoom" value="1.7715610000000026"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Work\\generatereport\\TSC\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM DECIDE_order2]]>
+	</queryString>
+	<field name="series" class="java.lang.Object"/>
+	<field name="side" class="java.lang.Object"/>
+	<field name="orders_unmat" class="java.lang.Object"/>
+	<field name="quantity" class="java.lang.Object"/>
+	<field name="cost" class="java.lang.Object"/>
+	<field name="mkt" class="java.lang.Object"/>
+	<field name="realized_pl" class="java.lang.Object"/>
+	<field name="unrealized_pl" class="java.lang.Object"/>
+	<variable name="L1_SUM_COST" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{cost}]]></variableExpression>
+	</variable>
+	<variable name="L1_SUM_REALIZED" class="java.lang.Double" resetType="None" calculation="Sum">
+		<variableExpression><![CDATA[$F{realized_pl}]]></variableExpression>
+	</variable>
+	<group name="series">
+		<groupExpression><![CDATA[$F{series}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="23">
+			<staticText>
+				<reportElement uuid="cb1276bc-72fd-436d-84cf-d53f8f481dfa" x="93" y="1" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9fe10739-7f37-4496-9afc-56f7f90eb6f3" x="390" y="1" width="37" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[MKT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b8267bdb-5b12-410d-92a8-19747cd7bbae" x="142" y="1" width="52" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[QUANTITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d781263-43d3-48bc-a01e-c1f6444e910d" x="194" y="1" width="72" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[ORDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cdd67ae-32cb-49c5-ace2-4302a7151407" x="266" y="1" width="124" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[COST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b150fa29-15fa-47ef-98b9-0eb6afa3a965" x="501" y="1" width="54" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[REALIZED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="42d008c6-4622-4643-b2cb-5c525ff24a3b" x="427" y="1" width="74" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[UNREALIZED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="300a3ccb-14e5-403a-96a7-0bda6f4e8796" x="0" y="1" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INSTRUMENT]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="88ded011-4189-4013-b44b-276f2678ed7a" x="0" y="21" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="6cbdaeb6-f3ba-4f7c-a29c-f8ab0c4349c4" x="0" y="0" width="555" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<subreport>
+				<reportElement uuid="13ac7f38-012c-4c73-a7e6-3bfa2c0535b4" x="0" y="0" width="555" height="20"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D1_subreport6.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField>
+				<reportElement uuid="26447c44-f820-41ef-8d33-a5852fd0f8bf" x="0" y="0" width="93" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{series}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e9ceb91-e39c-4f6b-a444-714403d1795f" x="93" y="0" width="49" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+$F{side}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56a3d35d-e135-4503-b3fa-97da140f71ba" x="142" y="0" width="52" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0")).format($F{quantity})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bba38a95-a07a-4776-9aa0-d72a9e1b985a" x="194" y="0" width="72" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0")).format($F{orders_unmat})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ce844f0e-f791-4af7-ab34-f580e8de103c" x="266" y="0" width="124" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{cost})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7c0d65fb-2d18-43fa-9433-cf2c5e507bcb" x="390" y="0" width="37" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{mkt})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69f70174-6c23-4879-bf58-7f77c28f1e3e" x="501" y="0" width="54" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{realized_pl})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="042b59ba-4e96-47d6-8b7e-f0924679b04a" x="427" y="0" width="74" height="21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{unrealized_pl})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

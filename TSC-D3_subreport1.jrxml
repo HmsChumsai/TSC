@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D3_subreport1" pageWidth="802" pageHeight="555" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\SSBKL001QAD.SSBKL001QAD-PC\\Desktop\\TSC D3\\Final TSC D3\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *
+from DECIDE_order
+group by order_no
+order by order_no]]>
+	</queryString>
+	<field name="order_id" class="java.lang.Object"/>
+	<field name="order_no" class="java.lang.Object"/>
+	<field name="order_entry_username" class="java.lang.Object"/>
+	<field name="order_entry_time" class="java.lang.Object"/>
+	<field name="trade_date" class="java.lang.Object"/>
+	<field name="settlement_date" class="java.lang.Object"/>
+	<field name="INSTRUMENT" class="java.lang.Object"/>
+	<field name="buy_sell" class="java.lang.Object"/>
+	<field name="TEST" class="java.lang.Object"/>
+	<field name="pos" class="java.lang.Object"/>
+	<field name="vol" class="java.lang.Object"/>
+	<field name="price" class="java.lang.Object"/>
+	<field name="match_price" class="java.lang.Object"/>
+	<field name="match_vol" class="java.lang.Object"/>
+	<field name="unmatched_qty" class="java.lang.Object"/>
+	<field name="Status" class="java.lang.Object"/>
+	<field name="service_type" class="java.lang.Object"/>
+	<field name="published" class="java.lang.Object"/>
+	<group name="session">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="market">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="underlying">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="pos">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="series">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22">
+			<staticText>
+				<reportElement uuid="767cf0a9-1a22-4c2c-b605-7cd522dbe63b" x="199" y="0" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4673a97d-e2be-4f1b-a431-47697040f953" x="52" y="-2" width="29" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[B/S]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12ed0061-98b8-4a68-bf93-5605a26913c7" x="0" y="-2" width="52" height="23"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ORDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ae89ef38-3f92-4afe-8c6d-14dc88c3ac33" x="118" y="0" width="81" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[INSTRUMENT]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="9883760b-6285-4e42-afa2-63a2202ba846" x="0" y="21" width="802" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="d8366c4e-d3dc-435f-aab4-8368e23c0cab" x="0" y="-2" width="802" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="5e281a81-b3e3-4429-9211-581edf24bef5" x="290" y="0" width="76" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PRICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d696ad95-e554-41ae-bd03-d4994d035a61" x="366" y="-1" width="59" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MATCHED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ef0acba-68e8-4a0e-ad7f-d8c55d7f4f52" x="663" y="0" width="59" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MPRICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfd3ba76-362c-4727-bf4a-b12d8e164793" x="425" y="0" width="42" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1bb8c71-61a3-48c2-94d1-e06729c853c5" x="81" y="-1" width="37" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[O/C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e6bd1d0-cd70-4500-b83d-2b9f0b0fdc80" x="249" y="-1" width="41" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PEAK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8bf2bd46-b736-4346-a1df-3a54b9a79072" x="467" y="0" width="64" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ENTRY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5c7cf6d-1dc1-4ab3-aca1-ec9f8dbf5e36" x="531" y="0" width="70" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[COND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bdd82411-5fd7-42d2-9c1c-4813644d450a" x="601" y="0" width="62" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M_QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="30e55361-1e73-40c5-9d69-4acaf9dd01d8" x="722" y="-1" width="80" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c959c39b-d721-41e7-a200-acfe55d80a49" x="0" y="0" width="52" height="23"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="28fc67b5-2d0c-4c49-95d4-6b4fc8572591" x="118" y="0" width="81" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSTRUMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7fbb5294-ee64-48b3-b30a-b2c23a52d9f9" x="199" y="0" width="50" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{vol})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f26a3ee-28bb-4f93-bf9b-0660b644d388" x="52" y="0" width="29" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buy_sell}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="95fb3ee9-992f-4379-95fa-f54970d8f234" x="81" y="0" width="37" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69bc66ba-566b-4478-a2d1-b6afae70d4e4" x="425" y="0" width="42" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="edfafcec-0305-41ba-bfd7-43f508609837" x="290" y="0" width="76" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{price})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f3bfbda6-ab1c-4b78-b7e3-b26815123cd5" x="467" y="0" width="64" height="23"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_entry_username}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="160fe494-b164-408c-80cb-a20e75ed7b46" x="734" y="0" width="68" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_entry_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b696984b-625b-4ee3-8106-1b9fecc7b986" x="249" y="-1" width="41" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{published}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5d907b8-f0ec-4210-ad3e-f8cf99a1c864" x="366" y="0" width="59" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{match_vol}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="80458f8f-3bd9-4a1d-9f33-2b43d5bfb03a" x="601" y="12" width="201" height="11"/>
+				<subreportParameter name="ORDERID">
+					<subreportParameterExpression><![CDATA[$F{order_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D3_subreport2_transactions_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="35d7fada-39f9-468e-991a-e3e9b9751a8d" x="531" y="-1" width="70" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{TEST}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

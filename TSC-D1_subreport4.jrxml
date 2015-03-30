@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D1_subreport4" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7c7f3667-383f-42a8-aa87-994ba700fd54">
+	<property name="ireport.zoom" value="1.771561000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM margin]]>
+	</queryString>
+	<field name="margin_code" class="java.lang.Object"/>
+	<field name="margin_num" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="43">
+			<staticText>
+				<reportElement uuid="b42ec625-6b6c-49ba-9090-db0ac87949b6" x="0" y="0" width="165" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Margin Required Per Underlying]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="6185b500-1356-4975-af63-91350f0e589e" x="0" y="21" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="84f5a5c4-3767-4b6b-919c-a18c990f74b8" x="0" y="42" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="81f7ccc9-b6ea-45c7-b0b4-29b031928b41" x="0" y="22" width="165" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Combined Commodity Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c915258f-4d00-4ace-bd8e-9ef535874224" x="390" y="22" width="150" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Margin Requirement Per Group]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="11">
+			<textField>
+				<reportElement uuid="29e3156a-48b6-4b49-814e-71fd68f14e69" x="0" y="0" width="165" height="11"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{margin_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29b36683-d0b8-47b5-8291-e30788ffb45b" x="426" y="0" width="114" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{margin_num})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

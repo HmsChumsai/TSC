@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D3" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91637d31-8a9d-46aa-9a63-b8b1c4353b9e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\George\\ireport\\TSC-D1\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from deposit;]]>
+	</queryString>
+	<field name="client_name" class="java.lang.Object"/>
+	<field name="account_no" class="java.lang.Object"/>
+	<field name="magin_type" class="java.lang.Object"/>
+	<field name="account_name" class="java.lang.Object"/>
+	<field name="trader_id" class="java.lang.Object"/>
+	<field name="trader_name" class="java.lang.Object"/>
+	<field name="TCH_account" class="java.lang.Object"/>
+	<field name="cust_flag" class="java.lang.Object"/>
+	<field name="cust_type" class="java.lang.Object"/>
+	<field name="account_type" class="java.lang.Object"/>
+	<field name="credit_type" class="java.lang.Object"/>
+	<field name="cannot_over_credit" class="java.lang.Object"/>
+	<field name="cash_checking" class="java.lang.Object"/>
+	<field name="mark_to_market" class="java.lang.Object"/>
+	<field name="auto_net_pos" class="java.lang.Object"/>
+	<field name="margin_method" class="java.lang.Object"/>
+	<field name="position_limit" class="java.lang.Object"/>
+	<field name="report_level_F" class="java.lang.Object"/>
+	<field name="report_level_O" class="java.lang.Object"/>
+	<field name="commission" class="java.lang.Object"/>
+	<field name="expected_commission" class="java.lang.Object"/>
+	<field name="withholding_tax" class="java.lang.Object"/>
+	<field name="cash_balance_prev" class="java.lang.Object"/>
+	<field name="excess_equity" class="java.lang.Object"/>
+	<field name="liquid_lvalue_curr" class="java.lang.Object"/>
+	<field name="credit_line" class="java.lang.Object"/>
+	<field name="buy_limit" class="java.lang.Object"/>
+	<field name="equity_balance_pre" class="java.lang.Object"/>
+	<field name="equity_balance_expected" class="java.lang.Object"/>
+	<field name="equity_balance_port" class="java.lang.Object"/>
+	<field name="excess_equity_bal_prev" class="java.lang.Object"/>
+	<field name="excess_equity_bal_expected" class="java.lang.Object"/>
+	<field name="excess_equity_bal_port" class="java.lang.Object"/>
+	<field name="unreal_pl_prev" class="java.lang.Object"/>
+	<field name="unreal_pl_expected" class="java.lang.Object"/>
+	<field name="unreal_pl_port" class="java.lang.Object"/>
+	<field name="magin_bal_prev" class="java.lang.Object"/>
+	<field name="magin_bal_expected" class="java.lang.Object"/>
+	<field name="magin_bal_port" class="java.lang.Object"/>
+	<field name="call_force_flag_prev" class="java.lang.Object"/>
+	<field name="call_force_flag_expected" class="java.lang.Object"/>
+	<field name="call_force_flag_port" class="java.lang.Object"/>
+	<field name="call_force_amount_prev" class="java.lang.Object"/>
+	<field name="call_force_amount_expected" class="java.lang.Object"/>
+	<field name="call_force_amount_port" class="java.lang.Object"/>
+	<field name="withdrawal_port" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="302" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="07881039-2f1f-444a-857f-2001db607e4c" x="0" y="112" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Client Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36669ca4-09df-4c78-b1ac-27e5a1e4d62f" x="0" y="123" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Account ID/Margin Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7d64d850-ea2d-4fb6-9731-c4e9e050be3c" x="0" y="134" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[TCH Account :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3195bf4c-a625-4c6e-855a-28e1fb6a4358" x="0" y="145" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cust Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0944973f-0eaa-4b02-96be-1ea32a2a7c34" x="0" y="156" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Credit Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ceccf38e-5f95-45d8-b66e-9b7aceeba713" x="0" y="167" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Mark To Market :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5e69d14-6652-4f83-9d9d-2fc9d580f7ae" x="0" y="178" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Position Limit :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fe1ab5a-5f44-4e4c-a5f8-ca2620b065ab" x="0" y="189" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Withholding Tax :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b31565a-8955-4474-808a-38a268167bb8" x="0" y="200" width="87" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Credit Line :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7c8ab43b-c5f4-4d53-ae43-79d79cf95699" x="87" y="112" width="113" height="11"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{client_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7e02780-8e73-4d4e-a7d9-b2c04f85e080" x="87" y="123" width="66" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="52371bf9-8e1e-420d-b278-67d0fa163224" x="153" y="123" width="10" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="04f4196c-437f-4ece-b504-f501d9c4ba67" x="163" y="123" width="54" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{magin_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0f03eb2b-7361-40ec-950b-5c5a0d7f14e8" x="87" y="134" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TCH_account}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccba541a-3c25-4d2a-a26b-dd9f1e3f8c22" x="87" y="145" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cust_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3031421c-ed9b-4569-9f29-9e7d234b73e2" x="87" y="156" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credit_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d5dd9eb-0281-45b3-8d41-0c84ebde2c43" x="87" y="167" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mark_to_market}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b35c7990-1eaa-44c6-b57c-3f5c66cf72c9" x="87" y="178" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{position_limit})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="567face9-aebd-42ee-a3f8-7884bad7ed0c" x="87" y="189" width="29" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{withholding_tax})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cbb3eee5-d1f4-4fb4-9ef0-26a01bb1572f" x="87" y="200" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{credit_line})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="71146758-4644-4a09-92b2-83eea29ffed4" x="0" y="232" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Equity Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4cafb2f7-1f62-4f55-8994-43a399ce0c0f" x="347" y="123" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Account Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea34299a-c6a5-4e55-8159-6a417e626b19" x="347" y="134" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Trader Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8eea3e91-99e5-4734-841f-1fde93b7000f" x="347" y="145" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cust Flag F/O :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1d01c441-adb7-4263-9c30-67289c3983f1" x="347" y="166" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Auto Net Position :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ece0cb1f-6edd-4ef2-92b2-3bcc1ac4e609" x="347" y="177" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Commission:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92c81d11-33be-4108-9c33-cf156e12f93c" x="347" y="188" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cash Balance (Prev):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6834697-af38-4776-b14e-127229a325db" x="347" y="199" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Liquidation Value(Curr):]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7b596324-4abb-49de-811b-13041701abaf" x="236" y="219" width="567" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="d1492bfb-2c0a-4a70-8a00-e0dd0210fcd6" x="274" y="220" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Previous]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f8caba0-e9bb-4306-9d6a-efdbe50b600d" x="591" y="145" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Acc. Type:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b077db50-a3c1-4a72-a223-6f4575270301" x="447" y="123" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="558b186a-52fb-444e-bd90-20e331868b15" x="447" y="134" width="100" height="11"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trader_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a6d5558d-c96b-4cf2-82f3-e40ac3d361b2" x="447" y="145" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cust_flag}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f571c98a-a3a7-478e-9f55-2206af169bc9" x="447" y="166" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{auto_net_pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="72a618ef-0f70-4eff-b5f3-0ca6e48b3e77" x="447" y="177" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{commission})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e744d390-2e62-4345-b8a1-8b3b5b844ed3" x="447" y="188" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{cash_balance_prev})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="60e6a34f-9881-469d-bdde-939cdcae6a63" x="447" y="199" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{liquid_lvalue_curr})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="726e5ef0-af55-458f-b6d0-4c72a454055b" x="236" y="230" width="567" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="8f83577e-8479-4257-9286-4787813e42b2" x="591" y="156" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cash Checking:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13895676-96a0-46e8-8d3d-f2bd8c214520" x="591" y="167" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Margin Method:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5564bfcf-7e17-4b15-b132-0833a944cbc6" x="591" y="178" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Expected Commission:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dca85e62-3675-4dd8-bd93-f67c2500b6bc" x="347" y="156" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Can't Over Credit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4f098d0a-195c-4712-bf9e-61aeb599cd13" x="447" y="156" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cannot_over_credit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a6047981-9ab5-4d58-b70a-8504a219a8b5" x="591" y="188" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Excess Equity (Curr):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fea39294-1311-4bcc-9128-c0faacd6038d" x="591" y="199" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Buy Limit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d3069bb9-3e26-4844-9eb4-9a576975dfde" x="691" y="145" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5f132453-8f74-4588-b426-772fe2232ccf" x="691" y="156" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cash_checking}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45dac14e-84df-4095-b3a3-ea49b624e14e" x="691" y="166" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{margin_method}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3e43df17-e868-4c20-995a-d099430e123d" x="691" y="177" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{expected_commission})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e36b4515-5baa-4116-9acc-e52567cbae19" x="691" y="188" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{excess_equity})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="03c93a2b-7720-4152-b0cc-190252721517" x="691" y="199" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{buy_limit})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4d55aaa-633c-499d-af48-516c378fbf40" x="274" y="232" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{equity_balance_pre})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="365e22cf-004c-496a-87da-83098c65e06c" x="471" y="220" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Current (Expected)]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c381ac6f-2e11-4785-adf1-97d6f3aa2cd7" x="471" y="232" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{equity_balance_expected})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="86161890-48cf-44aa-beb8-58d45d2496a8" x="702" y="220" width="100" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Current(Port)]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="50b64f41-ffa3-48e6-9b75-c1fe9dbcbadc" x="702" y="232" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{equity_balance_port})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="59a2a50e-823e-4a43-ba1f-7eeb2c5cff5b" x="116" y="189" width="15" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="9d4c37a8-16b8-40ca-9298-f0ebaf04c4d1" x="2" y="1" width="198" height="77"/>
+				<imageExpression><![CDATA["tsc.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="206ef77e-66a7-4043-a788-58c9b66e28c3" x="623" y="2" width="179" height="76"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[TISCO SECURITIES COMPANY LIMITED
+48/8 TISCO TOWER, 4 /F, NORTH SATHORN ROAD,
+BANGRAK Bangkok 10500 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27f27952-0731-44ca-9174-5e4ac167e132" x="660" y="123" width="31" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Page :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86c58979-9fb6-4a93-a7ba-40ef0044a940" x="708" y="123" width="11" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4b2b28e0-24fc-4a4c-ad68-26e5aaba0de4" x="691" y="123" width="17" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1fed0f9f-9397-465c-b8d9-19d46a788daf" x="719" y="123" width="17" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="383883b0-7f93-4d55-9ca4-809fea933544" x="274" y="242" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{excess_equity_bal_prev})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d970032-7313-4dbd-9dc7-41d1f7b6e692" x="274" y="252" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{unreal_pl_prev})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2ba446cc-ab7e-49d5-b5dd-620af59f4049" x="274" y="262" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{magin_bal_prev})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80e4acc5-4bc5-4a83-9206-8324217f415d" x="274" y="272" width="31" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{call_force_flag_prev}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1f292417-90c7-48e8-9521-1ffcbf7c56ee" x="471" y="242" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{excess_equity_bal_expected})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="239e2bb6-b1c1-4bed-916f-e7486f861e8e" x="471" y="252" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{unreal_pl_expected})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b3cce90-08ae-4627-9333-270899dae664" x="471" y="262" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{magin_bal_expected})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c7a1a8a1-2884-4386-a076-4b3f0749478b" x="702" y="242" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{excess_equity_bal_port})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69530f60-596b-4111-8f39-55ea23fcf0b4" x="702" y="252" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{unreal_pl_port})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4b62aea-bd6e-446c-9ff5-ca1ee15a60d3" x="702" y="262" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{magin_bal_port})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="26939f6d-b24e-46a2-9225-0f49e5f69bbe" x="703" y="272" width="37" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{call_force_flag_port}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b44a0958-3be8-4331-a17d-84dd78321a94" x="305" y="272" width="10" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5f6a59a6-1518-4cea-a21d-819f3a415e4f" x="315" y="272" width="59" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{call_force_amount_prev})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a39e2180-61a0-4eff-a110-e70567459e7b" x="471" y="272" width="34" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{call_force_flag_expected}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1e132491-3967-4b72-b333-75a863dd3e1d" x="505" y="272" width="10" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b9324d47-9802-425f-b12a-fdf738b56aea" x="515" y="272" width="56" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{call_force_amount_expected})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a5a1d1c9-6bc0-4e14-a3c6-56256d4ff51a" x="740" y="272" width="10" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c92564cf-46a5-47d4-b37b-48f6867f77b4" x="750" y="272" width="53" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{call_force_amount_port})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4a00bd7c-9f91-40a8-acee-c1c293782e05" x="703" y="283" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{withdrawal_port})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0be8c019-c307-4d96-932e-583746f63e59" x="0" y="242" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Excess Equity Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="617277a6-b9c3-4ab3-ad3e-b48274abefca" x="0" y="252" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Float P/L or Unreal P/L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f2749a7-1caf-45cc-a9cc-186567748400" x="0" y="262" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Margin Balance ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5711e5c3-50b3-43d7-87aa-f6d9bdc433df" x="0" y="272" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Call Force Flag/Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c65183f-56e5-4f32-9a50-8c5fa55d478f" x="0" y="282" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Deposit / Withdrawal]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ef8510e5-37a8-4a8d-a5fe-2ed246c3ad82" x="0" y="0" width="277" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Report: Order Confirmation]]></text>
+			</staticText>
+			<textField pattern="HH.mm">
+				<reportElement uuid="e6296133-6baf-4bb9-b5d7-52aecb58c900" x="776" y="0" width="27" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="208d2e9b-3eb0-4020-8896-d97729f23e8a" x="754" y="0" width="22" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="f536ed4d-8271-4674-a858-a085ee6fa386" x="703" y="0" width="51" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="84573bad-1bfb-4cf0-80dd-7a2d32bbb33f" x="681" y="0" width="21" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="6bee6831-bd48-49bd-86b9-bb09ae50f2b7" x="0" y="0" width="802" height="54"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D3_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="88">
+			<staticText>
+				<reportElement uuid="79052343-1e79-4e36-9c60-05ebabfd9d49" x="2" y="11" width="236" height="74"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="7"/>
+				</textElement>
+				<text><![CDATA[การให้คำแนะนำ (Recommedation(s))
+[] ไม่มีการให้คำแนะนำ (No recommedation)
+[] มีการให้คำแนะนำ (Proposed recommedation(s))
+
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+__________________________________________________________
+
+ลงชื่อ (Authorized)___________________________________________
+		 เจ้าหน้าที่การตลาดรับคำสั่ง
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="abfec009-04b0-45bd-a97e-57c6cc15c244" x="546" y="11" width="245" height="74"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="7"/>
+				</textElement>
+				<text><![CDATA[การส่งคำสั่งซื้อ/ ขาย/ ยกเลิก (Instruction(s)to BUY/ SELL/ CANCLE )
+ข้าพเจ้าได้ส่งซื้อและ/ หรือขาย/ หรือยกเลิกคำสั่งซื้อหรือขาย
+ตามรายการดังกล่าวข้างต้นจริงทุกประการ และคำสั่งทุกรายการ
+ข้างต้นข้าพเจ้าเป็นผู้ตัดสินใจเองทุกประการ
+
+ ลงชื่อ (Authorized)__________________________________
+		ลูกค้า/ผู้รับมอบหมายอำนาจ
+	          Client/ Nominated Power of Attorney]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7f40decc-5847-46da-be96-a314bba01d82" x="2" y="0" width="801" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified Date: 20140620-01 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91637d31-8a9d-46aa-9a63-b8b1c4353b9e">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="673"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\George\\ireport\\TSC-D1\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from deposit;]]>
+	</queryString>
+	<field name="client_name" class="java.lang.Object"/>
+	<field name="account_no" class="java.lang.Object"/>
+	<field name="account_name" class="java.lang.Object"/>
+	<field name="trader_id" class="java.lang.Object"/>
+	<field name="credit_limit" class="java.lang.Object"/>
+	<field name="credit_available" class="java.lang.Object"/>
+	<field name="net_pos" class="java.lang.Object"/>
+	<field name="credit_calculation_method" class="java.lang.Object"/>
+	<field name="margin_calculation_method" class="java.lang.Object"/>
+	<field name="position_limit" class="java.lang.Object"/>
+	<field name="can_mark_to_market" class="java.lang.Object"/>
+	<field name="equity_balance_pre" class="java.lang.Object"/>
+	<field name="equity_balance_current" class="java.lang.Object"/>
+	<field name="excess_equity_bal_prev" class="java.lang.Object"/>
+	<field name="excess_quity_bal_current" class="java.lang.Object"/>
+	<field name="mkt_to_mkt_fut_previous" class="java.lang.Object"/>
+	<field name="initial_margin_prev" class="java.lang.Object"/>
+	<field name="initial_margin_current" class="java.lang.Object"/>
+	<field name="maintenance_margin_prev" class="java.lang.Object"/>
+	<field name="maintenance_margin_current" class="java.lang.Object"/>
+	<field name="force_margin_prev" class="java.lang.Object"/>
+	<field name="force_margin_current" class="java.lang.Object"/>
+	<field name="min_cash_call_margin_prev" class="java.lang.Object"/>
+	<field name="cash_balance" class="java.lang.Object"/>
+	<field name="non_cash_collateral" class="java.lang.Object"/>
+	<field name="FC_collateral" class="java.lang.Object"/>
+	<field name="profit_loss" class="java.lang.Object"/>
+	<field name="premium" class="java.lang.Object"/>
+	<field name="call_margin_ammount" class="java.lang.Object"/>
+	<field name="call_force_amount" class="java.lang.Object"/>
+	<field name="total_comm_vat" class="java.lang.Object"/>
+	<field name="trade_date" class="java.lang.Object"/>
+	<field name="settlement_date" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<image>
+				<reportElement uuid="9d4c37a8-16b8-40ca-9298-f0ebaf04c4d1" x="0" y="0" width="101" height="97"/>
+				<imageExpression><![CDATA["tsc.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="206ef77e-66a7-4043-a788-58c9b66e28c3" x="240" y="31" width="308" height="66"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[TISCO SECURITIES COMPANY LIMITED
+48/8 TISCO TOWER, 4 /F, NORTH SATHORN ROAD,
+BANGRAK Bangkok 10500 ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="179" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8770ac78-d435-48dc-a1ce-e2ed6d8ef639" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[TISCO Securities]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4ed08b49-1497-4cdf-bee5-f674bd13bcc3" x="0" y="30" width="277" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACCOUNT CONFIRM SUMMARY AND PORTFOLIO (ALL)	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17e1a893-713e-4ee9-9417-a849e7b7e6ea" x="0" y="61" width="87" height="20"/>
+				<textElement/>
+				<text><![CDATA[FROM	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bda6227e-5aed-4105-b52a-6c730753fe91" x="0" y="93" width="87" height="20"/>
+				<textElement/>
+				<text><![CDATA[TRADE DATE	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b07bac6-35a5-46f7-aa4e-659cb33c15aa" x="0" y="127" width="87" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACCOUNT NO	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6e2412f-4e8f-4ca0-adf6-02f6b79996c2" x="291" y="93" width="87" height="20"/>
+				<textElement/>
+				<text><![CDATA[SETTLE DATE   	: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9dcb62ce-a6c2-4900-9044-18114cf938ac" x="291" y="127" width="87" height="20"/>
+				<textElement/>
+				<text><![CDATA[TRADER ID	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1516596a-2b72-4c28-b4fe-bdb4815b4c13" x="432" y="30" width="37" height="20"/>
+				<textElement/>
+				<text><![CDATA[PAGE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5121d5cb-97f8-4dd1-9d69-1af65f34eba3" x="469" y="30" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="273a0bae-cb5f-4200-bdca-92e81f4cf42e" x="484" y="30" width="13" height="20"/>
+				<textElement/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="148592f3-2e4a-48fd-aa52-4c840755119c" x="497" y="30" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef8510e5-37a8-4a8d-a5fe-2ed246c3ad82" x="0" y="159" width="277" height="20"/>
+				<textElement/>
+				<text><![CDATA[Report: Account Confirm Summary and Portfolio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14a77335-a7b5-4e95-a6fb-667b0c75fa68" x="87" y="61" width="171" height="20"/>
+				<textElement/>
+				<text><![CDATA[TISCO Securities Company Limited]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="96126fac-23c6-44c3-a0ec-bec4e0d7a6d1" x="87" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{account_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d7ecbaf-29f8-4545-898b-2dab5b63dbb3" x="187" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{account_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="216f8633-2876-4356-98f3-10cd9671ac8b" x="378" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{trader_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7150c44f-13e0-4a0d-9720-42e9e793c764" x="87" y="93" width="171" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{trade_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ba2f7b4-b854-489f-9a3e-3d20bfd1f92a" x="378" y="93" width="134" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{settlement_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="6bee6831-bd48-49bd-86b9-bb09ae50f2b7" x="0" y="0" width="548" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D1_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement uuid="4a83c0dc-cc47-4b40-ab21-2c64c227c2bd" x="0" y="0" width="548" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D1_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement uuid="bbec8118-28e2-415b-a332-8af600ee90b1" x="0" y="0" width="548" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D1_subreport4.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement uuid="8eb900e4-662d-42c0-8023-2a183df97feb" x="0" y="0" width="548" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D1_subreport5.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="f536ed4d-8271-4674-a858-a085ee6fa386" x="63" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="84573bad-1bfb-4cf0-80dd-7a2d32bbb33f" x="0" y="0" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[Report Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="208d2e9b-3eb0-4020-8896-d97729f23e8a" x="369" y="0" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField pattern="HH.mm">
+				<reportElement uuid="e6296133-6baf-4bb9-b5d7-52aecb58c900" x="432" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f0837c50-bf30-4e2f-b678-7eb6467b1c82" x="0" y="20" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[E & OD]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

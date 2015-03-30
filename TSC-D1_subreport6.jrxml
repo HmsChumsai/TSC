@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D1_subreport6" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f9a9d134-6fc3-42a1-838d-960880c75511">
+	<property name="ireport.zoom" value="1.7715610000000022"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM DECIDE_order2]]>
+	</queryString>
+	<field name="series" class="java.lang.Object"/>
+	<field name="side" class="java.lang.Object"/>
+	<field name="orders_unmat" class="java.lang.Object"/>
+	<field name="quantity" class="java.lang.Object"/>
+	<field name="cost" class="java.lang.Object"/>
+	<field name="mkt" class="java.lang.Object"/>
+	<field name="realized_pl" class="java.lang.Object"/>
+	<field name="unrealized_pl" class="java.lang.Object"/>
+	<variable name="L1_SUM_COST" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{cost}]]></variableExpression>
+	</variable>
+	<variable name="L1_SUM_REALIZED" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{realized_pl}]]></variableExpression>
+	</variable>
+	<group name="series">
+		<groupExpression><![CDATA[$F{series}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnFooter>
+		<band height="20">
+			<textField>
+				<reportElement uuid="44236f52-f805-46ba-870c-bb93a8bbf21f" x="266" y="0" width="87" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($V{L1_SUM_COST})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1b635467-bd1e-434f-afb8-1a36c2d7d31c" x="0" y="0" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="960f495f-e0d6-4f7a-a995-81c590768c92" x="93" y="0" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="193fda1c-ec01-4cc1-a485-ff96da822019" x="142" y="0" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6a8aa4a1-3eca-4b13-b52e-2ef4c6e01ffa" x="194" y="0" width="72" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3aea639d-8ac6-4860-8ab8-c82a6a15b523" x="390" y="0" width="37" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8673bdf1-4700-4477-81f8-69dd6ad71383" x="427" y="0" width="74" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="70e30f98-18b0-4e46-a955-407afa50e62a" x="501" y="0" width="54" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($V{L1_SUM_REALIZED})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

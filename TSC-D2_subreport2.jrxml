@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D2_subreport2" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="975daf15-d577-41b9-9fc4-8df1be6a01bb">
+	<property name="ireport.zoom" value="2.1961500000000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select long_short,pos, sum(vol),sum(total_value),sum(match_vol),sum(matched_value),sum(open_vol),sum(open_value),sum(cancel_qty),sum(cancel_value) from DECIDE_order group by long_short,pos order by long_short ASC, pos DESC;]]>
+	</queryString>
+	<field name="long_short" class="java.lang.Object"/>
+	<field name="pos" class="java.lang.Object"/>
+	<field name="sum(vol)" class="java.lang.Object"/>
+	<field name="sum(total_value)" class="java.lang.Object"/>
+	<field name="sum(match_vol)" class="java.lang.Object"/>
+	<field name="sum(matched_value)" class="java.lang.Object"/>
+	<field name="sum(open_vol)" class="java.lang.Object"/>
+	<field name="sum(open_value)" class="java.lang.Object"/>
+	<field name="sum(cancel_qty)" class="java.lang.Object"/>
+	<field name="sum(cancel_value)" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4f8af6cd-848e-496b-90fb-280da92a9b59" mode="Opaque" x="60" y="0" width="56" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Position]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8599147c-bb61-4ed6-817f-f923d355d298" mode="Opaque" x="351" y="0" width="97" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matched Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80c603e8-5f0c-428b-aac9-20e877575e4c" mode="Opaque" x="116" y="0" width="53" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dba681ab-4ebf-41d0-930e-fa49d4e959fc" mode="Opaque" x="169" y="0" width="116" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d74a200-7aa8-4b81-adcc-bccd0836347d" mode="Opaque" x="688" y="0" width="114" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cancelled Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f102bce-8676-4fcb-8358-95e745bb68fc" mode="Opaque" x="1" y="0" width="59" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Side]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="46b06137-e20d-4a0b-917c-ca39296a9955" mode="Opaque" x="285" y="0" width="66" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matched Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f79e3317-c294-4739-ac1c-850624e49681" mode="Opaque" x="448" y="0" width="52" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Open Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79bf5f21-b58d-41b1-bf2a-96b6eb526389" mode="Opaque" x="500" y="0" width="65" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cancelled Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22496cca-1dcf-4d37-9f85-0680b67a4d3b" mode="Opaque" x="565" y="0" width="123" height="19" backcolor="#999999"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Open Value]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f9987459-d8cd-4faf-90ba-3105c7809080" x="0" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{long_short}=="L"?"Long":"Short"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e674cc63-3c63-4d02-9b86-14279a6f7adb" x="60" y="0" width="56" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0b638dc-254f-49eb-b9c7-c863547d7110" x="116" y="0" width="53" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{sum(vol)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="18dffd1c-cc70-4591-a998-1173d4fcd034" x="169" y="0" width="106" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum(total_value)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a67829f-5cd0-4315-8bed-73ee3a5f6cb8" x="285" y="0" width="66" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{sum(match_vol)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d804bd3b-0973-4b13-b670-3c1ed7dd5bf3" x="351" y="0" width="85" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum(matched_value)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="76bb512b-d192-4041-a52a-22e0eca7ab91" x="448" y="0" width="52" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{sum(open_vol)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="978bf986-741a-43fb-948d-ddd6fdd039fb" x="500" y="0" width="65" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{sum(cancel_qty)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="97946538-60f5-4c37-beb0-17fbb80e77d3" x="565" y="0" width="123" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum(open_value)})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2db96712-c6f0-4313-9dfd-20cf3ec06e43" x="688" y="0" width="114" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum(cancel_value)})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

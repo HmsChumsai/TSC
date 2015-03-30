@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D2_subreport1_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fd8c49bc-7907-4c40-b36a-3491ac269616">
+	<property name="ireport.zoom" value="2.9230756500000017"/>
+	<property name="ireport.x" value="1046"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM FINAL_VIEW;]]>
+	</queryString>
+	<field name="cdate" class="java.lang.Object"/>
+	<field name="pos" class="java.lang.Object"/>
+	<field name="series" class="java.lang.Object"/>
+	<field name="long_short" class="java.lang.Object"/>
+	<field name="match_price" class="java.lang.Object"/>
+	<field name="multiplier" class="java.lang.Object"/>
+	<field name="sum_match_vol" class="java.lang.Object"/>
+	<field name="sum_comm_vat" class="java.lang.Object"/>
+	<field name="sum_contsize" class="java.lang.Object"/>
+	<field name="final_total_net_contsize" class="java.lang.Object"/>
+	<field name="tmp_vol_price_multi" class="java.lang.Object"/>
+	<variable name="L0_CONT_SIZE_SUM" class="java.lang.Double" resetType="Group" resetGroup="pos" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum_contsize}]]></variableExpression>
+	</variable>
+	<variable name="L1_QTY_SUM" class="java.lang.Integer" resetType="Group" resetGroup="series" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum_match_vol}]]></variableExpression>
+	</variable>
+	<variable name="L1_CONT_SIZE_SUM" class="java.lang.Double" resetType="Group" resetGroup="series" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum_contsize}]]></variableExpression>
+	</variable>
+	<variable name="TMP_AVG_PRICE_SUM" class="java.lang.Double" resetType="Group" resetGroup="series" calculation="Sum">
+		<variableExpression><![CDATA[$F{tmp_vol_price_multi}]]></variableExpression>
+	</variable>
+	<variable name="L1_AVG_AVG_PRICE" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{TMP_AVG_PRICE_SUM}/$V{L1_QTY_SUM}]]></variableExpression>
+	</variable>
+	<variable name="L0_COMM_VAT_SUM" class="java.lang.Double" resetType="Group" resetGroup="cdate" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum_comm_vat}]]></variableExpression>
+	</variable>
+	<variable name="L0_TOTAL_NET_NET" class="java.lang.Double" resetType="Group" resetGroup="cdate">
+		<variableExpression><![CDATA[$F{final_total_net_contsize}-$V{L0_COMM_VAT_SUM}]]></variableExpression>
+	</variable>
+	<group name="cdate">
+		<groupExpression><![CDATA[$F{cdate}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField>
+					<reportElement uuid="b0ee6282-85c7-4504-b7dd-a0b96042762d" x="1" y="0" width="219" height="16"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Clearing Date: "+$F{cdate}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField>
+					<reportElement uuid="3697a610-fde0-4589-aac3-ad2bfe12e270" x="1" y="0" width="100" height="20"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA["*** Total Net"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="8969dae6-413d-41c4-88ba-9b393ffcd908" x="415" y="0" width="112" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{final_total_net_contsize})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="43fb443c-fad5-486c-a823-3605f862b977" x="527" y="0" width="126" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L0_COMM_VAT_SUM})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="d0b8f2c2-66fb-4fd9-b5d0-cc0796e2bf10" x="653" y="0" width="149" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L0_TOTAL_NET_NET})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="pos">
+		<groupExpression><![CDATA[$F{pos}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement uuid="7483139c-3a37-433f-b6ec-3c15b1d8a8a8" x="415" y="0" width="112" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L0_CONT_SIZE_SUM})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="9f7ef83d-e440-4b9b-a04d-64c8f59d6c56" x="653" y="0" width="149" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L0_CONT_SIZE_SUM})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="5b265858-8924-474b-b04e-eb8b81c69d89" x="1" y="0" width="100" height="20"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA["*** Total "+$F{pos}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="series">
+		<groupExpression><![CDATA[$F{series}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="abf8082b-6908-4c1e-87db-1743407cbb7e" x="0" y="0" width="100" height="20"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[SubTotal]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="e3b0b40d-ca68-4cc4-88fb-31580ed4520d" x="653" y="0" width="149" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L1_CONT_SIZE_SUM})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="9846768b-2c8f-4b91-829f-c14eaba89bba" x="220" y="0" width="65" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($V{L1_QTY_SUM})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="0da7dda2-4c3b-4df5-88f7-867be1abb46c" x="285" y="0" width="72" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L1_AVG_AVG_PRICE})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="0eeba8a1-6a21-419a-b0ea-823755b795ce" x="415" y="0" width="112" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{L1_CONT_SIZE_SUM})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="long_short">
+		<groupExpression><![CDATA[$F{long_short}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9c22cc95-bbe7-40a0-8658-01dda4f83da4" x="1" y="0" width="59" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e55c9e5-bd70-4c24-8803-265780a568d4" x="60" y="0" width="108" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{series}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c1a9f70-572c-4865-abc6-c5a70d4a354c" x="168" y="0" width="52" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{long_short}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cda289a6-f6bb-4b21-97ab-c465677eddca" x="285" y="0" width="72" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{match_price})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="57570c6a-6f65-4f0a-9449-5f0e5f46151a" x="357" y="0" width="58" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{multiplier})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9312a2fa-55b1-4a58-998b-1ea4e3b30ad1" x="415" y="0" width="112" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum_contsize})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7ad68b6-d16e-4a5f-8056-0bcae36cd03b" x="653" y="0" width="149" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+(new DecimalFormat("###,###,##0.00")).format($F{sum_contsize})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d11de43c-cd81-4dee-bd59-7d5475902c2d" x="220" y="0" width="65" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0")).format($F{sum_match_vol})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
