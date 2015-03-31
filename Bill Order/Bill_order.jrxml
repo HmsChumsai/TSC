@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D3" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91637d31-8a9d-46aa-9a63-b8b1c4353b9e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\George\\ireport\\TSC-D1\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from deposit;]]>
+	</queryString>
+	<field name="DATE" class="java.lang.Object"/>
+	<field name="NAME" class="java.lang.Object"/>
+	<field name="account_name" class="java.lang.Object"/>
+	<field name="name_officer" class="java.lang.Object"/>
+	<field name="account_no" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="158" splitType="Stretch">
+			<image>
+				<reportElement uuid="9d4c37a8-16b8-40ca-9298-f0ebaf04c4d1" x="2" y="0" width="198" height="77"/>
+				<imageExpression><![CDATA["tsc.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="e0337a44-261a-4fc0-830f-82d98f82dbd7" x="426" y="92" width="45" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PAGE	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="76b4b584-74a3-4ce4-bd70-d5aab4fe86ec" x="471" y="92" width="11" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7380bb6b-0380-4b4d-9a99-2a6339a94bf2" x="482" y="92" width="10" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1120bbc7-c8d8-435a-8197-d87b4100ccd9" x="492" y="92" width="13" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="daa788fd-135c-4c00-a6dd-4dbbff0cc15b" x="0" y="81" width="207" height="11"/>
+				<textElement>
+					<font fontName="Arial Unicode MS" size="8"/>
+				</textElement>
+				<text><![CDATA[Bill Order to Buy/Sell/Cancel (รายการคำสั่งซื้อ/ขาย/ยกเลิก)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a399d29-980d-4e09-96fd-7cba5fb649bb" x="0" y="103" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name		:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80f37f1e-df4a-49c7-88c0-379e9ad5a0f4" x="0" y="114" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Account No	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="083b060a-3e8b-459e-87a8-dba9901a0515" x="0" y="125" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Buy Limit		:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc64b5f6-56d9-4acc-8925-8a8bf7e6da4d" x="0" y="136" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Acct Type		:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a852f688-5d0c-4266-931c-2b1fb81094de" x="184" y="114" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A/O		:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="171d8f46-ab9e-441d-a865-1547252fb471" x="184" y="125" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sell Limit		:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6aa7b1b7-0f07-4c09-be0b-0debf93b07a2" x="184" y="136" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cust Type		:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="3df6a2d8-0ab8-4cc5-8c12-22aeedb6d0f8" x="0" y="92" width="333" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ceb36e7-adb5-4214-ae35-ed965ca321c2" x="84" y="103" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="980ec7bd-c25e-4d4e-926a-e6a8f267461a" x="84" y="114" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b77a5058-4d09-410e-9c25-1d834b9e44d2" x="84" y="125" width="100" height="11"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[777,086.56]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9198f523-a6b3-40cf-a183-cecd2dfcaf65" x="84" y="136" width="100" height="11"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b3eaab2-9dc6-4af6-9dfc-7c9959f4f4f5" x="268" y="114" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90a1ddc8-b23a-444e-9fdd-9fe16e617358" x="268" y="125" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="946a5757-5c9b-4e2c-8406-6463fc5675f8" x="268" y="136" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0dde5322-ae13-4e9b-b6b2-92e127c1d9cb" x="368" y="114" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Trade Date	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2637e7c0-beeb-4eeb-8066-6c94320bc4bc" x="368" y="125" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Credit Limit	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d7dfd567-af95-479d-8107-c2335ce22adf" x="368" y="136" width="84" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Credit Type	:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="488fbb84-6ae1-4c61-a493-0344f08f6f35" x="452" y="114" width="103" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2d6a6075-683c-4161-9dad-658bfd238bdb" x="452" y="125" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1,000,000.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92a07cd2-8a5d-4f48-86a2-b9ba1bb7f729" x="452" y="136" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="6bee6831-bd48-49bd-86b9-bb09ae50f2b7" x="0" y="0" width="555" height="54"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Bill_order_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="138">
+			<staticText>
+				<reportElement uuid="715e2d58-a698-414a-a906-f7bd38b01641" x="1" y="0" width="279" height="125"/>
+				<textElement markup="none">
+					<font fontName="Arial Unicode MS" size="8"/>
+				</textElement>
+				<text><![CDATA[การให้คำแนะนำ (Recommendation)
+[] ไม่มีการให้คำแนะนำ (No recommendation)
+[] มีการให้คำแนะนำ ดังนี้ (Proposed recommendations)
+___________________________________________________
+___________________________________________________
+___________________________________________________
+___________________________________________________
+
+ลงชื่อ (Authorized)____________________________________
+                                                 เจ้าหน้าที่การตลาดผู้รับส่ง
+                                                          Account Officer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab751036-8505-4068-a357-183a462d306a" x="281" y="0" width="274" height="124"/>
+				<textElement markup="none">
+					<font fontName="Arial Unicode MS" size="8"/>
+				</textElement>
+				<text><![CDATA[การส่งคำสั่งซื้อ /ขาย /ยกเลิก (Instruction(s) to Buy/Sell/Cancel )
+"ข้าพเจ้าได้สั่งซื้อและ/ หรือขายและ/ หรือยกเลิกคำสั่งซื้อหรือขายตาม
+รายการดังกล่าวข้างต้นจริงทุกรายการ และคำสั่งทุกรายการ ข้าพเจ้า
+เป็นผู้ตัดสินใจเองทุกประการ"
+"I hereby cetify that the above transaction(s) have been carried out
+by my instruction(s) and that I have determined the above mentioned
+instruction(s) at my own discretion"
+
+ลงชื่อ (Authorized)___________________________________
+                                                        ลูกค้า / ผู้รับมอบอำนาจ
+                                           Client / Nominated Power of Attorney]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
