@@ -1,0 +1,6 @@
+$ sudo -i -u decide "mkdir -p /tmp/SVNLatestDecide/ASP && cd /tmp/SVNLatestDecide/ASP && svn checkout http://10.31.42.62/svn/DECIDE_THAI/trunk/pre_confirmation_p2_p3/ASP --username deployment --password 123456 --depth infinity"
+ 
+sudo -i -u decide "mkdir -p /tmp/SVNLatestDecide/config && cd /tmp/SVNLatestDecide/config && svn export http://10.31.42.62/svn/DECIDE_THAI/trunk/pre_confirmation_p2_p3/Derivatives_convert2pdf.conf --username deployment --password 123456 --depth infinity"
+
+sudo -i -u decide rsync -r --exclude="*.svn" /tmp/SVNLatestDecide/ASP/* /usr/local/decide/cust/clientConfirmation/v0001/ASP
+sudo -i -u decide rsync -r --exclude="*.svn" /tmp/SVNLatestDecide/config/* /usr/local/decide/cust/clientConfirmation/v0001/

@@ -5,20 +5,20 @@
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
-		<![CDATA[select * from deposit_order]]>
+		<![CDATA[select * from decide_order]]>
 	</queryString>
-	<field name="number_no" class="java.lang.Object"/>
+	<field name="side" class="java.lang.Object"/>
 	<field name="stock" class="java.lang.Object"/>
 	<field name="vol" class="java.lang.Object"/>
 	<field name="price" class="java.lang.Object"/>
-	<field name="amt" class="java.lang.Object"/>
+	<field name="gross_amt" class="java.lang.Object"/>
 	<field name="comm_fee" class="java.lang.Object"/>
 	<field name="vat" class="java.lang.Object"/>
 	<field name="amount_due" class="java.lang.Object"/>
-	<field name="pos" class="java.lang.String"/>
-	<variable name="SUM_amt" class="java.lang.Object" resetType="Group" resetGroup="series" calculation="Sum">
-		<variableExpression><![CDATA[$F{amt}]]></variableExpression>
+	<variable name="SUM_gross_amt" class="java.lang.Object" resetType="Group" resetGroup="series" calculation="Sum">
+		<variableExpression><![CDATA[$F{gross_amt}]]></variableExpression>
 	</variable>
+	<variable name="COUNT_POS" class="java.lang.String" resetType="Group" resetGroup="series" incrementType="Group" incrementGroup="series" calculation="Count"/>
 	<group name="session">
 		<groupExpression><![CDATA[]]></groupExpression>
 	</group>
@@ -44,7 +44,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8" isUnderline="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SUM_amt}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SUM_gross_amt}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement uuid="7a1bc7c7-839e-4cde-9a5e-2560338cd2c8" x="317" y="0" width="66" height="27"/>
@@ -93,7 +93,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8" isUnderline="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{SUM_amt}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{SUM_gross_amt}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement uuid="88381f2b-9b03-4572-9a30-ea950dc789ed" x="317" y="0" width="66" height="23"/>
@@ -209,7 +209,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{number_no}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{COUNT_POS}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="f5d907b8-f0ec-4210-ad3e-f8cf99a1c864" x="466" y="27" width="89" height="23"/>
@@ -237,7 +237,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amt}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{gross_amt}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="28fc67b5-2d0c-4c49-95d4-6b4fc8572591" x="162" y="27" width="81" height="23"/>
@@ -265,7 +265,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{side}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

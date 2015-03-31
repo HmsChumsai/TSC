@@ -2,7 +2,7 @@
 # Last Modified Date: 20140616-02
 
 export broker_prefix="TSC"
-export report_type="TSC-D3"
+export report_type="TSC-D5"
 
 useConfig="/usr/local/decide/cust/clientConfirmation/v0001/Derivatives_convert2pdf.conf"
 commonShell="/usr/local/decide/cust/clientConfirmation/v0001/common_convert2pdf.sh"
@@ -18,6 +18,7 @@ set +a
 #Only EMAIL_MODE=yes can enable the send email function
 #EMAIL_MODE=yes
 #email list can contain multiple emails separated by space
-#EMAIL_LIST="arno.lv@serisys.com"
+#EMAIL_LIST="john.chen@serisys.com"
 
 $commonShell "$@"
+
