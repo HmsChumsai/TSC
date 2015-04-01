@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D3_subreport1" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D6_subreport1" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="46"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
-		<![CDATA[select * from decide_order]]>
+		<![CDATA[select * from decide_order,decide_total
+order by side]]>
 	</queryString>
 	<field name="side" class="java.lang.Object"/>
 	<field name="stock" class="java.lang.Object"/>
@@ -15,6 +16,8 @@
 	<field name="comm_fee" class="java.lang.Object"/>
 	<field name="vat" class="java.lang.Object"/>
 	<field name="amount_due" class="java.lang.Object"/>
+	<field name="comm" class="java.lang.Object"/>
+	<field name="net" class="java.lang.Object"/>
 	<variable name="SUM_amt" class="java.lang.Double" resetType="Group" resetGroup="side" calculation="Sum">
 		<variableExpression><![CDATA[$F{gross_amt}]]></variableExpression>
 		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
@@ -53,73 +56,78 @@
 					<reportElement uuid="3a397b08-cf9d-42c9-b45f-5880097f99f7" x="0" y="10" width="555" height="1"/>
 				</line>
 				<staticText>
-					<reportElement uuid="c9fbbee7-e048-450a-a25a-7a4ee051c6d5" x="295" y="24" width="100" height="12"/>
+					<reportElement uuid="c9fbbee7-e048-450a-a25a-7a4ee051c6d5" x="217" y="24" width="100" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[Total Comm.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="704333e4-9192-459f-81bb-d32c6f100c2c" x="295" y="36" width="100" height="12"/>
+					<reportElement uuid="704333e4-9192-459f-81bb-d32c6f100c2c" x="217" y="36" width="100" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[Total TR Fee.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="b97ce2b0-9fd6-44b5-87ed-695419785c3d" x="295" y="48" width="100" height="12"/>
+					<reportElement uuid="b97ce2b0-9fd6-44b5-87ed-695419785c3d" x="217" y="48" width="100" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[Total Cl Fee.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="d3a193f5-b0ad-4684-929c-d04b2156d883" x="295" y="60" width="100" height="12"/>
+					<reportElement uuid="d3a193f5-b0ad-4684-929c-d04b2156d883" x="217" y="60" width="100" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[Total VAT.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="83560c6c-fa57-411b-86c2-1ffe9736cba6" x="466" y="36" width="59" height="12"/>
+					<reportElement uuid="83560c6c-fa57-411b-86c2-1ffe9736cba6" x="466" y="36" width="73" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[0.00]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="eda52d88-8007-446c-8b91-25c78f86e909" x="466" y="48" width="59" height="12"/>
+					<reportElement uuid="eda52d88-8007-446c-8b91-25c78f86e909" x="466" y="48" width="73" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[0.00]]></text>
 				</staticText>
 				<textField>
-					<reportElement uuid="2365eed7-da71-4dd1-b0fc-f31075b24720" x="466" y="24" width="59" height="12"/>
+					<reportElement uuid="2365eed7-da71-4dd1-b0fc-f31075b24720" x="466" y="24" width="73" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8" isUnderline="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{comm_fee})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{TOTAL_comm_fee})]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="63836dd4-0dda-4704-9df3-2355dd818b0e" x="466" y="60" width="59" height="12"/>
+					<reportElement uuid="63836dd4-0dda-4704-9df3-2355dd818b0e" x="466" y="60" width="73" height="12"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8" isUnderline="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{vat})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($V{TOTAL_vat})]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="0bb6124e-d431-4461-b809-5a7afc35d808" x="295" y="72" width="100" height="12"/>
-					<textElement>
+					<reportElement uuid="0bb6124e-d431-4461-b809-5a7afc35d808" x="217" y="72" width="100" height="12"/>
+					<textElement textAlignment="Right">
 						<font size="8"/>
 					</textElement>
 					<text><![CDATA[Net Customer]]></text>
 				</staticText>
+				<textField>
+					<reportElement uuid="e4d8ed51-f21d-4ff6-baa1-958352d169ef" x="466" y="72" width="73" height="12"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{net}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupFooter>
 	</group>
 	<group name="side">
-		<groupExpression><![CDATA[]]></groupExpression>
+		<groupExpression><![CDATA[$F{side}]]></groupExpression>
 		<groupFooter>
 			<band height="25">
 				<staticText>

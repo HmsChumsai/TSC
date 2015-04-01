@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D6_subreport1" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="98"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
@@ -15,9 +15,39 @@
 	<field name="amount" class="java.lang.Object"/>
 	<field name="mkt_value" class="java.lang.Object"/>
 	<field name="pl" class="java.lang.Object"/>
+	<variable name="SUM_AMOUNT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<variable name="SUM_MKT_VAL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{mkt_value}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<variable name="SUM_GAIN" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pl}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
+	<pageHeader>
+		<band height="23">
+			<staticText>
+				<reportElement uuid="b9abe5f4-dbdb-420b-8813-938aa7806c7c" x="0" y="0" width="93" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PORTFOLIO AS AT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fed33728-7c16-4dca-92e2-b47594736a69" x="83" y="0" width="72" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
 	<columnHeader>
 		<band height="22">
 			<staticText>
@@ -133,7 +163,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{avg_price}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(new DecimalFormat("###,###,##0.00")).format($F{avg_price})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="b696984b-625b-4ee3-8106-1b9fecc7b986" x="295" y="0" width="59" height="22"/>
@@ -159,17 +189,41 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="50">
+		<band height="34">
 			<staticText>
 				<reportElement uuid="5d00346a-c6b8-4c4a-94fa-37af356476ac" x="0" y="14" width="60" height="19"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="adc42732-1ed9-4527-97b8-876787f1786d" x="0" y="13" width="555" height="1"/>
 			</line>
+			<line>
+				<reportElement uuid="a9b0e148-6281-4856-8803-9bcec606dcfb" x="0" y="33" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="079ecbdf-d68d-45ea-9ff1-975fe4ae98d3" x="354" y="14" width="71" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_AMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c98e6b5-62d0-4c64-98b9-ea24c7b44ecd" x="425" y="14" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_MKT_VAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="41c21f9c-bc22-4435-8296-3265c116b653" x="495" y="14" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_GAIN}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

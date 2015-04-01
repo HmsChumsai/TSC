@@ -152,21 +152,29 @@ function getOrderList(orders)
 					local buy_sell = orderleg:getOrderKind()
 					print('buy_sell : ' .. buy_sell)
 					table.insert (orderItem,{'side',buy_sell})
-
+          
 					local vol = orderleg:getExecQty()
 					table.insert (orderItem,{'vol',vol})
 
 					local price = orderleg:getAvgExecPrice()
-					--table.insert (orderItem,{'price',price})
+          price = easygetter.EvenAmountToDouble(price)
+					print('price : ',price)
+          table.insert (orderItem,{'price',price})
 
 					local comm_fee  = getFee(order,orderleg)
 					local vat=0.07*comm_fee
 					local gross_amt=vol*price
           local amount_due=0.0
-					--table.insert (orderItem,{'comm_fee',comm_fee})
-					--table.insert (orderItem,{'vat',vat})
-					--table.insert (orderItem,{'gross_amt',gross_amt})
-					--table.insert (orderItem,{'amount_due',amount_due})
+
+          if (buy_sell=='Buy') then
+            amount_due=gross_amt+comm_fee+vat
+          else
+            amount_due=gross_amt-comm_fee-vat
+          end
+					table.insert (orderItem,{'comm_fee',comm_fee})
+					table.insert (orderItem,{'vat',vat})
+					table.insert (orderItem,{'gross_amt',gross_amt})
+					table.insert (orderItem,{'amount_due',amount_due})
 
 					table.insert(orderList,orderItem)
 				end
