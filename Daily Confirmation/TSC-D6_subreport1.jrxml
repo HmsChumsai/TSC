@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D3_subreport1" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D6_subreport1" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0922cf29-3790-4e74-8e67-619396ffe695">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="11"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
@@ -15,38 +15,6 @@
 	<field name="amount" class="java.lang.Object"/>
 	<field name="mkt_value" class="java.lang.Object"/>
 	<field name="pl" class="java.lang.Object"/>
-	<variable name="SUM_gross_amt" class="java.lang.Object" resetType="Group" resetGroup="series" calculation="Sum">
-		<variableExpression><![CDATA[$F{gross_amt}]]></variableExpression>
-	</variable>
-	<variable name="COUNT_POS" class="java.lang.String" resetType="Group" resetGroup="series" incrementType="Group" incrementGroup="series" calculation="Count"/>
-	<group name="session">
-		<groupExpression><![CDATA[]]></groupExpression>
-	</group>
-	<group name="market">
-		<groupExpression><![CDATA[]]></groupExpression>
-	</group>
-	<group name="underlying">
-		<groupExpression><![CDATA[]]></groupExpression>
-		<groupFooter>
-			<band height="2">
-				<line>
-					<reportElement uuid="dccc53e3-173e-42cd-9a56-d73ac37d6034" x="0" y="0" width="555" height="1"/>
-				</line>
-			</band>
-		</groupFooter>
-	</group>
-	<group name="pos">
-		<groupExpression><![CDATA[$F{vol}]]></groupExpression>
-		<groupFooter>
-			<band height="28"/>
-		</groupFooter>
-	</group>
-	<group name="series">
-		<groupExpression><![CDATA[]]></groupExpression>
-		<groupFooter>
-			<band height="23"/>
-		</groupFooter>
-	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -107,30 +75,30 @@
 				</textElement>
 				<text><![CDATA[MKT. PRICE]]></text>
 			</staticText>
-			<textField>
-				<reportElement uuid="d965b912-f221-40b7-b5fa-c60a806f8a0d" x="145" y="0" width="30" height="22"/>
+			<staticText>
+				<reportElement uuid="0b33c556-4d27-4b43-b4d5-02576bd4dd4b" x="354" y="-1" width="71" height="22"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[T]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="07762903-8e3d-4160-b28d-7fc9ddfa4b10" x="355" y="0" width="70" height="22"/>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b188e37a-2d77-4579-90dc-cf2096c5740c" x="145" y="0" width="30" height="21"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[AMOUNT]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[T]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="33" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<textField>
 				<reportElement uuid="c959c39b-d721-41e7-a200-acfe55d80a49" x="0" y="0" width="60" height="22"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{COUNT_POS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="f5d907b8-f0ec-4210-ad3e-f8cf99a1c864" x="425" y="0" width="70" height="22"/>
@@ -175,19 +143,33 @@
 				<textFieldExpression><![CDATA[$F{mkt_price}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="edfafcec-0305-41ba-bfd7-43f508609837" x="354" y="0" width="71" height="22"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement uuid="7ef53bce-735e-46ed-9546-405444d8500b" x="495" y="0" width="60" height="22"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pl}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement uuid="edfafcec-0305-41ba-bfd7-43f508609837" x="354" y="0" width="71" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
+	<summary>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="5d00346a-c6b8-4c4a-94fa-37af356476ac" x="0" y="14" width="60" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="adc42732-1ed9-4527-97b8-876787f1786d" x="0" y="13" width="555" height="1"/>
+			</line>
+		</band>
+	</summary>
 </jasperReport>

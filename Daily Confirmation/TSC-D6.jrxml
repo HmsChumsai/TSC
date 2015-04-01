@@ -9,9 +9,10 @@
 	<queryString>
 		<![CDATA[select * from deposit;]]>
 	</queryString>
-	<field name="account_name" class="java.lang.Object"/>
-	<field name="name_officer" class="java.lang.Object"/>
 	<field name="account_no" class="java.lang.Object"/>
+	<field name="account_name" class="java.lang.Object"/>
+	<field name="account_type" class="java.lang.Object"/>
+	<field name="name_officer" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

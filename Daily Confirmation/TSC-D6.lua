@@ -62,6 +62,7 @@ function process()
 	orderList,totalList = getOrderList(orders)
 	portList = getPortList()
 	database_tables = CreateSchema()
+	print('orderList : ',dump(orderList ))
 	common.CreateTables(db_file, log_file,  database_tables, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_total, totalList, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_deposit, depositList, debug_mode)
@@ -82,7 +83,8 @@ function CreateSchema()
   local database_tables = {
   {table_name_deposit,{'account_no' .. sql_column_text,
 	'account_name' .. sql_column_text,
-	'account_type' .. sql_column_text
+	'account_type' .. sql_column_text,
+  'name_officer' .. sql_column_text
 
 	}},
   {table_name_order,{
@@ -93,7 +95,7 @@ function CreateSchema()
   'gross_amt' .. sql_column_real,
   'comm_fee' .. sql_column_real,
   'vat' .. sql_column_real,
-  'amount_due' .. sql_column_real
+  'amount_due' .. sql_column_real,
   }},
 	{table_name_port,{
   'stock' .. sql_column_text,
@@ -103,12 +105,10 @@ function CreateSchema()
 	'mkt_price' .. sql_column_real,
 	'amount' .. sql_column_real,
 	'mkt_value' .. sql_column_real,
-	'pl' .. sql_column_real
+	'pl' .. sql_column_real,
 	}},
   {table_name_total,{'comm' ..sql_column_real,
-  'tr_fee' ..sql_column_real,
-  'ci_fee' ..sql_column_real,
-  'vat' ..sql_column_real,
+  'net' .. sql_column_real,
   }}
 	}
 	print ('database_tables : '  ,dump(database_tables))
@@ -120,8 +120,6 @@ function getDeposit(depositId)
 	print('----------- Start getDeposit --------')
 	local depositItem = {}
 	local depositList={}
-  --local DECIDE_deposit_obj = fo.Deposit( tonumber(depositId) )
-  --DECIDE_deposit_obj = fo.Deposit( tonumber(depositId) )
   table.insert (depositItem, {'account_no', DECIDE_deposit_obj:getNumber()})
   table.insert (depositItem, {'account_name', DECIDE_deposit_obj:getName()})
   if (DECIDE_deposit_obj:hasAccountType()) then
@@ -139,10 +137,7 @@ function getOrderList(orders)
 	local orderList= {}
 	local totalList={}
 	local totalItem={}
-	local total_comm_fee=0
-	local total_vat=0
-	print('pairs(orders) : ',dump(orders))
-	--local DECIDE_deposit_obj = fo.eposit( tonumber(depositId) )
+  local net=0
 	for _,no in pairs(orders) do 
 		local order = fo.Order( no )
 		local orderHandlingType = order:getHandlingType()
@@ -152,8 +147,8 @@ function getOrderList(orders)
 				local match_qty = orderleg:getExecQty()
 				if (match_qty~=0) then	
 					local orderItem = {}
-          local contract = orderleg:getContract()
-					table.insert (orderItem , {'stock',contract:getContractCode()})
+          local symbol= fo.getOrderContract(order):getSymbol() 
+					table.insert (orderItem , {'stock',symbol})
 					local buy_sell = orderleg:getOrderKind()
 					print('buy_sell : ' .. buy_sell)
 					table.insert (orderItem,{'side',buy_sell})
@@ -162,33 +157,29 @@ function getOrderList(orders)
 					table.insert (orderItem,{'vol',vol})
 
 					local price = orderleg:getAvgExecPrice()
-					table.insert (orderItem,{'price',price})
+					--table.insert (orderItem,{'price',price})
 
 					local comm_fee  = getFee(order,orderleg)
 					local vat=0.07*comm_fee
 					local gross_amt=vol*price
-					local amount_due=gross_amt+comm_fee+vat	
+          local amount_due=0.0
+					--table.insert (orderItem,{'comm_fee',comm_fee})
+					--table.insert (orderItem,{'vat',vat})
+					--table.insert (orderItem,{'gross_amt',gross_amt})
+					--table.insert (orderItem,{'amount_due',amount_due})
 
-					table.insert (orderItem,{'comm_fee',comm_fee})
-					table.insert (orderItem,{'vat',vat})
-					table.insert (orderItem,{'gross_amt',gross_amt})
-					table.insert (orderItem,{'amount_due',amount_due})
-
-					total_comm_fee = total_comm_fee+comm_fee
-					total_vat = total_vat+vat
 					table.insert(orderList,orderItem)
 				end
 			end
 		end
-
 	end
-  table.insert(totalItem,{'comm',total_comm_fee})
-  table.insert(totalItem,{'vat',vat})
+  table.insert(totalItem,{'net',net})
+  --table.insert(totalItem,{'comm',total_comm_fee})
+  --table.insert(totalItem,{'vat',vat})
 	--table.insert(totalList,{'total_comm_fee',total_comm_fee})
 	--table.insert(totalList,{'total_vat',total_vat})
 	table.insert(totalList,totalItem)
 	print('totalList : ',dump(totalList))
-	print('orderList : ',dump(orderList ))
 	print('----------- End getOrderList--------')
 	return orderList,totalList
 end
@@ -201,16 +192,23 @@ function getPortList()
 		local data = accpos.getPositionValues( position, tim.TimeStamp.current() , tim.TimeStamp.current(), DECIDE_deposit_obj:getGeneralLedgerCurrencyType() )
 		
 		if ( data.effective == "Yes" ) then
-			
+    	--local pos = fo.Position(position)
       local portItem = {}
-			local contract = position:getContract()
+      local ok, pe = pcall(fo.PositionEvaluation, {
+        position = position,
+        plview = plview,plrefdate = plref
+        })
+      local ce = pe:getContractEvaluation()  
+      local symbol=ce:getContract():getSymbol() 
+      --fo.getOrderContract(order):getSymbol() 
+      local contract = position:getContract()
 			local stock = contract:getContractCode()
-			local ce = fo.ContractEvaluation{ contract=contract }
+			--local ce = fo.ContractEvaluation{ contract=contract }
 			local mkt_price = ce:getLastUnchecked()
-			local pos = easygetter.EvenAmountToDouble(data.endQuantity)
-			local avg_price = easygetter.EvenAmountToDouble(data.endAveragePrice)
-			local amount=pos*avg_price
-			local mkt_value = pos*mkt_price
+			local pos = pe:getQuantity() 
+			local avg_price = pe:getAvgePriceNet() 
+			local amount=pe:getPosBookValue()
+			local mkt_value = pe:getLiqMarketValue()
 			
 			
 			---------------------------- Get UPL-------------------
@@ -225,8 +223,11 @@ function getPortList()
 				end
 			end
 			--------------------------- End UPL--------------------
-			table.insert(portItem,{'stock',stock})
+			table.insert(portItem,{'stock',symbol})
+			table.insert(portItem,{'amount',amount})
 			table.insert(portItem,{'mkt_price',mkt_price})
+      table.insert(portItem,{'mkt_value',mkt_value})
+      table.insert(portItem,{'avg_price',avg_price})
 			table.insert(portList,portItem)
 		end
 	end
