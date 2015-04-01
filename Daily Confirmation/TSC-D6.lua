@@ -84,7 +84,8 @@ function CreateSchema()
   {table_name_deposit,{'account_no' .. sql_column_text,
 	'account_name' .. sql_column_text,
 	'account_type' .. sql_column_text,
-  'name_officer' .. sql_column_text
+  'trader_name' .. sql_column_text,
+  
 
 	}},
   {table_name_order,{
@@ -125,9 +126,21 @@ function getDeposit(depositId)
   if (DECIDE_deposit_obj:hasAccountType()) then
   	table.insert (depositItem, {'account_type', DECIDE_deposit_obj:getAccountType():getName() })
 	end
+  local client = DECIDE_deposit_obj:getClient()
+  if (client:hasAccountManager()) then
+    local user = client:getAccountManager()
+    local person = user:getPerson()
+    local trader_name = person:getName()
+    print('trader_name : ' .. trader_name)
+    table.insert(depositItem,{'trader_name',trader_name})    
+  end
+  
 	table.insert(depositList,depositItem)
-	print('depositList : ',dump(depositList))
-	print('----------- End getDeposit ---------')
+
+
+  print('depositList : ',dump(depositList))
+	
+  print('----------- End getDeposit ---------')
 	return depositList
 end
 
@@ -168,8 +181,10 @@ function getOrderList(orders)
 
           if (buy_sell=='Buy') then
             amount_due=gross_amt+comm_fee+vat
+            net = net-amount_due
           else
             amount_due=gross_amt-comm_fee-vat
+            net = net + amount_due
           end
 					table.insert (orderItem,{'comm_fee',comm_fee})
 					table.insert (orderItem,{'vat',vat})
@@ -181,6 +196,11 @@ function getOrderList(orders)
 			end
 		end
 	end
+  if (net<0) then
+    net = "Paid"
+  else
+    net = Received
+  end
   table.insert(totalItem,{'net',net})
   --table.insert(totalItem,{'comm',total_comm_fee})
   --table.insert(totalItem,{'vat',vat})
@@ -217,25 +237,28 @@ function getPortList()
 			local avg_price = pe:getAvgePriceNet() 
 			local amount=pe:getPosBookValue()
 			local mkt_value = pe:getLiqMarketValue()
+      local pl = amount-mkt_value
 			
 			
 			---------------------------- Get UPL-------------------
 			
-			local orderVolLimit = easygetter.GetFirstActiveOVL(depositId)
-			local orderVolumeRisk = nil
-			if (orderVolLimit ~= nil) then
-				orderVolumeRisk = orderVolLimit:getUniqueRisk()
-				if(orderVolumeRisk ~= nil) then
-					local pl =easygetter.EvenAmountToDouble(orderVolumeRisk:getTotalFutureUPLGross())
-					table.insert(portItem,{'pl',pl})
-				end
-			end
+--			local orderVolLimit = easygetter.GetFirstActiveOVL(depositId)
+--			local orderVolumeRisk = nil
+--			if (orderVolLimit ~= nil) then
+--				orderVolumeRisk = orderVolLimit:getUniqueRisk()
+--				if(orderVolumeRisk ~= nil) then
+--					local pl =easygetter.EvenAmountToDouble(orderVolumeRisk:getTotalFutureUPLGross())
+--					table.insert(portItem,{'pl',pl})
+--				end
+--			end
 			--------------------------- End UPL--------------------
-			table.insert(portItem,{'stock',symbol})
+			table.insert(portItem,{'pos',pos})
+      table.insert(portItem,{'stock',symbol})
 			table.insert(portItem,{'amount',amount})
 			table.insert(portItem,{'mkt_price',mkt_price})
       table.insert(portItem,{'mkt_value',mkt_value})
       table.insert(portItem,{'avg_price',avg_price})
+      table.insert(portItem,{'pl',pl})
 			table.insert(portList,portItem)
 		end
 	end
