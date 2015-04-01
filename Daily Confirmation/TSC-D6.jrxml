@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TSC-D6" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91637d31-8a9d-46aa-9a63-b8b1c4353b9e">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="225"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\George\\ireport\\TSC-D1\\"]]></defaultValueExpression>
 	</parameter>
@@ -150,13 +150,15 @@ BANGRAK Bangkok 10500 ]]></text>
 			<subreport>
 				<reportElement uuid="6bee6831-bd48-49bd-86b9-bb09ae50f2b7" x="0" y="0" width="555" height="54"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["TSC-D6_subreport1.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["TSC-D6_subreport2.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="65">
-			<line>
-				<reportElement uuid="497b3829-d202-4c69-b6da-5c6a8e129f93" x="0" y="0" width="555" height="1"/>
-			</line>
+			<subreport>
+				<reportElement uuid="ff71c35b-166d-4520-b974-41236cf8d589" x="0" y="0" width="555" height="54"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["TSC-D6_subreport1.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 		<band height="62">
 			<staticText>
