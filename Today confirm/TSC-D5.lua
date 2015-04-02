@@ -1,7 +1,7 @@
 require "ocs"
 
 local cmdln = require "cmdline"
-local fo = require "fo"
+fo = require "fo"
 local tim = require "tim"
 local maps = require "maps"
 local accpos = require "accpos"
@@ -39,7 +39,7 @@ function process()
   local confirmreport = require "confirmreport"
   local debug_mode = false
   local orderMatchStatusToMLMapping = {[true]="M", [false]="P"}
-
+  local TSCReportUtil = require "TSCReportUtil"
   --local table_name_deposit = "deposit"
   --local table_name_order = "DECIDE_order"
 
@@ -55,7 +55,8 @@ function process()
 	local totalList = {}
 	local orders = easygetter.GetOrders( depositId, entryFrom, entryTo )
 	depositList = getDeposit(depositId)
-	orderList,totalList = getOrderList(orders)
+	--orderList,totalList = getOrderList(orders)
+	orderList,totalList = TSCReportUtil.getOrderList(orders)
 	database_tables = CreateSchema()
 	common.CreateTables(db_file, log_file,  database_tables, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_total, totalList, debug_mode)
@@ -93,6 +94,7 @@ function CreateSchema()
   'tr_fee' ..sql_column_real,
   'ci_fee' ..sql_column_real,
   'vat' ..sql_column_real,
+  'net' .. sql_column_text
   }}
 	}
 	print ('database_tables : '  ,dump(database_tables))
@@ -114,65 +116,6 @@ function getDeposit(depositId)
 	print('depositList : ',dump(depositList))
 	print('----------- End getDeposit ---------')
 	return depositList
-end
-
-
-function getOrderList(orders)
-	print('----------- Start getOrderList--------')
-	local orderList= {}
-	local totalList={}
-	local totalItem={}
-	local total_comm_fee=0
-	local total_vat=0
-	print('pairs(orders) : ',dump(orders))
-	--local DECIDE_deposit_obj = fo.eposit( tonumber(depositId) )
-	for _,no in pairs(orders) do 
-		local order = fo.Order( no )
-		local orderHandlingType = order:getHandlingType()
-		if (orderHandlingType == 'TradingOrder' or orderHandlingType == 'BlockTrade') then
-			local orderlegs = order:getOrderLegs()
-			for _,orderleg in pairs(orderlegs) do
-				local match_qty = orderleg:getExecQty()
-				if (match_qty~=0) then	
-					local orderItem = {}
-					table.insert (orderItem , {'stock',orderleg:getContract():getContractCode()})
-					local buy_sell = orderleg:getOrderKind()
-					print('buy_sell : ' .. buy_sell)
-					table.insert (orderItem,{'side',buy_sell})
-
-					local vol = orderleg:getExecQty()
-					table.insert (orderItem,{'vol',vol})
-
-					local price = orderleg:getAvgExecPrice()
-					table.insert (orderItem,{'price',price})
-
-					local comm_fee  = getFee(order,orderleg)
-					local vat=0.07*comm_fee
-					local gross_amt=vol*price
-					local amount_due=gross_amt+comm_fee+vat	
-
-					table.insert (orderItem,{'comm_fee',comm_fee})
-					table.insert (orderItem,{'vat',vat})
-					table.insert (orderItem,{'gross_amt',gross_amt})
-					table.insert (orderItem,{'amount_due',amount_due})
-
-					total_comm_fee = total_comm_fee+comm_fee
-					total_vat = total_vat+vat
-					table.insert(orderList,orderItem)
-				end
-			end
-		end
-
-	end
-  table.insert(totalItem,{'comm',total_comm_fee})
-  table.insert(totalItem,{'vat',vat})
-	--table.insert(totalList,{'total_comm_fee',total_comm_fee})
-	--table.insert(totalList,{'total_vat',total_vat})
-	table.insert(totalList,totalItem)
-	print('totalList : ',dump(totalList))
-	print('orderList : ',dump(orderList ))
-	print('----------- End getOrderList--------')
-	return orderList,totalList
 end
 
 function getFee(order, orderLeg, ut)
