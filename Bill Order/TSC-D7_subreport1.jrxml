@@ -5,23 +5,16 @@
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
-		<![CDATA[select * from deposit_order]]>
+		<![CDATA[select * from decide_order]]>
 	</queryString>
-	<field name="Number_order" class="java.lang.Object"/>
+	<field name="side" class="java.lang.Object"/>
 	<field name="stock" class="java.lang.Object"/>
 	<field name="vol" class="java.lang.Object"/>
-	<field name="price" class="java.lang.Double"/>
-	<field name="amt" class="java.lang.Object"/>
+	<field name="price" class="java.lang.Object"/>
+	<field name="gross_amt" class="java.lang.Object"/>
 	<field name="comm_fee" class="java.lang.Object"/>
 	<field name="vat" class="java.lang.Object"/>
 	<field name="amount_due" class="java.lang.Object"/>
-	<field name="buy_sell" class="java.lang.Object"/>
-	<field name="st" class="java.lang.Object"/>
-	<field name="time" class="java.lang.Object"/>
-	<field name="entry_user" class="java.lang.String"/>
-	<variable name="SUM_amt" class="java.lang.Object" resetType="Group" resetGroup="series" calculation="Sum">
-		<variableExpression><![CDATA[$F{amt}]]></variableExpression>
-	</variable>
 	<group name="session">
 		<groupExpression><![CDATA[]]></groupExpression>
 	</group>
@@ -35,7 +28,7 @@
 		<groupExpression><![CDATA[]]></groupExpression>
 	</group>
 	<group name="series">
-		<groupExpression><![CDATA[$F{Number_order}]]></groupExpression>
+		<groupExpression><![CDATA[]]></groupExpression>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
@@ -134,7 +127,6 @@
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Number_order}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="8f26a3ee-28bb-4f93-bf9b-0660b644d388" x="138" y="0" width="47" height="11"/>
@@ -148,7 +140,7 @@
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{buy_sell}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{side}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="934d54cf-11e4-466d-902c-68bfc748e841" x="235" y="0" width="47" height="11"/>
@@ -176,7 +168,7 @@
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{st}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="445c16bd-df6f-4c99-ad28-eb6764c7432c" x="427" y="11" width="39" height="11"/>
@@ -197,7 +189,7 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="3c7f7db1-8288-4ce6-99f6-3e592da7b948" x="233" y="22" width="50" height="11"/>
@@ -218,7 +210,7 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{entry_user}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="ee0d4966-3c32-445f-8fec-b2438a604f41" x="407" y="0" width="20" height="11"/>
