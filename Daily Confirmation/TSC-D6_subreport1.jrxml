@@ -5,7 +5,7 @@
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.callouts" value="##Wed Mar 19 16:44:18 CST 2014"/>
 	<queryString>
-		<![CDATA[select * from decide_port]]>
+		<![CDATA[select * from DECIDE_port]]>
 	</queryString>
 	<field name="stock" class="java.lang.Object"/>
 	<field name="tff" class="java.lang.Object"/>

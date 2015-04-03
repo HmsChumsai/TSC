@@ -9,8 +9,13 @@
 	<queryString>
 		<![CDATA[select * from deposit;]]>
 	</queryString>
-	<field name="account_name" class="java.lang.Object"/>
 	<field name="account_no" class="java.lang.Object"/>
+	<field name="account_name" class="java.lang.Object"/>
+	<field name="account_type" class="java.lang.Object"/>
+	<field name="trader_name" class="java.lang.Object"/>
+	<field name="buy_limit" class="java.lang.Object"/>
+	<field name="credit_limit" class="java.lang.Object"/>
+	<field name="credit_type" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -117,7 +122,7 @@
 			<textField>
 				<reportElement uuid="0ceb36e7-adb5-4214-ae35-ed965ca321c2" x="84" y="103" width="100" height="11"/>
 				<textElement>
-					<font size="8"/>
+					<font fontName="Arial Unicode MS" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{account_name}]]></textFieldExpression>
 			</textField>
@@ -141,13 +146,6 @@
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[C]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7b3eaab2-9dc6-4af6-9dfc-7c9959f4f4f5" x="268" y="114" width="100" height="11"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[0]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="90a1ddc8-b23a-444e-9fdd-9fe16e617358" x="268" y="125" width="100" height="11"/>
@@ -192,19 +190,26 @@
 				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="2d6a6075-683c-4161-9dad-658bfd238bdb" x="452" y="125" width="100" height="11"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[1,000,000.00]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="92a07cd2-8a5d-4f48-86a2-b9ba1bb7f729" x="452" y="136" width="100" height="11"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[1]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="7d4b458a-d514-4ee8-ba34-13efd7642cc6" x="268" y="114" width="100" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trader_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fdddcd0e-b875-43cc-afe7-7652d07cc67d" x="452" y="125" width="100" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credit_limit}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
