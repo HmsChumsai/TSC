@@ -2,6 +2,7 @@ require "ocs"
 
 local cmdln = require "cmdline"
 fo = require "fo"
+M = require "customOrderData"
 local tim = require "tim"
 local maps = require "maps"
 local accpos = require "accpos"
@@ -32,7 +33,7 @@ print("format: " .. format)
 ocs.createInstance( "LUA" )
 
 function process()
-  
+  local M = require "customOrderData" 
   local dubi = require "dubi"
   local common = require "common"
   local easygetter = require "easygetter"
@@ -60,15 +61,14 @@ function process()
   DECIDE_deposit_obj = fo.Deposit( tonumber(depositId) )
 	depositList = getDeposit(depositId)
 	--orderList,totalList = getOrderList(orders)
-  orderList,totalList = TSCReportUtil.getOrderList(orders)
+  orderList,totalList = TSCReportUtil.getOrderList(orders,1)
 	portList = getPortList()
 	database_tables = CreateSchema()
-	print('orderList : ',dump(orderList ))
+	--print('orderList : ',dump(orderList ))
 	common.CreateTables(db_file, log_file,  database_tables, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_total, totalList, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_deposit, depositList, debug_mode)
 	common.InsertRecords(db_file, log_file, table_name_order, orderList, debug_mode)
-	common.InsertRecords(db_file, log_file, table_name_port, portList, debug_mode)
 	
 end
 
@@ -86,34 +86,34 @@ function CreateSchema()
 	'account_name' .. sql_column_text,
 	'account_type' .. sql_column_text,
   'trader_name' .. sql_column_text,
-  
-
+  'buy_limit' .. sql_column_real,
+  'credit_limit' .. sql_column_real,
+  'credit_type' .. sql_column_text
 	}},
   {table_name_order,{
   'side' .. sql_column_text,
   'stock' .. sql_column_text,
   'vol' .. sql_column_integer,
   'price' .. sql_column_real,
+  'matched' .. sql_column_integer,
+  'st'  ..  sql_column_text,
+  'match_qty' .. sql_column_integer,
+  'match_price' .. sql_column_real,
+  'time' .. sql_column_text,
+  'entry' .. sql_column_text,
+	'publish' .. sql_column_text,
+  'condition' .. sql_column_text,
   'gross_amt' .. sql_column_real,
   'comm_fee' .. sql_column_real,
   'vat' .. sql_column_real,
   'amount_due' .. sql_column_real,
   }},
-	{table_name_port,{
-  'stock' .. sql_column_text,
-	'tff' .. sql_column_text,
-	'pos' .. sql_column_integer,
-	'avg_price' .. sql_column_real,
-	'mkt_price' .. sql_column_real,
-	'amount' .. sql_column_real,
-	'mkt_value' .. sql_column_real,
-	'pl' .. sql_column_real,
-	}},
   {table_name_total,{'comm' ..sql_column_real,
   'net' .. sql_column_real,
+  'paid_received' .. sql_column_text
   }}
 	}
-	print ('database_tables : '  ,dump(database_tables))
+	--print ('database_tables : '  ,dump(database_tables))
 	print ('----------------- End CreateSchema ---------------') 
   return database_tables
 end
@@ -135,11 +135,21 @@ function getDeposit(depositId)
     print('trader_name : ' .. trader_name)
     table.insert(depositItem,{'trader_name',trader_name})    
   end
+
+  -- Get Credit Line --
+
+  local orderVolLimit = easygetter.GetFirstActiveOVL(depositId)
+  if (orderVolLimit ~= nil) then
+    table.insert (depositItem, {'credit_limit', easygetter.EvenAmountToDouble(orderVolLimit:getCreditLine ())})
+  end
+
+
+  -- End Credit Line --
   
 	table.insert(depositList,depositItem)
 
 
-  print('depositList : ',dump(depositList))
+  --print('depositList : ',dump(depositList))
 	
   print('----------- End getDeposit ---------')
 	return depositList
@@ -172,19 +182,6 @@ function getPortList()
 			local mkt_value = pe:getLiqMarketValue()
       local pl = amount-mkt_value
 			
-			
-			---------------------------- Get UPL-------------------
-			
---			local orderVolLimit = easygetter.GetFirstActiveOVL(depositId)
---			local orderVolumeRisk = nil
---			if (orderVolLimit ~= nil) then
---				orderVolumeRisk = orderVolLimit:getUniqueRisk()
---				if(orderVolumeRisk ~= nil) then
---					local pl =easygetter.EvenAmountToDouble(orderVolumeRisk:getTotalFutureUPLGross())
---					table.insert(portItem,{'pl',pl})
---				end
---			end
-			--------------------------- End UPL--------------------
 			table.insert(portItem,{'pos',pos})
       table.insert(portItem,{'stock',symbol})
 			table.insert(portItem,{'amount',amount})
@@ -195,7 +192,7 @@ function getPortList()
 			table.insert(portList,portItem)
 		end
 	end
-  print("portList : ",dump(portList))
+  --print("portList : ",dump(portList))
 	print("----------------- End getPortList ------------------")
   return portList
 end

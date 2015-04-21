@@ -303,13 +303,13 @@ order by side]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField>
 				<reportElement uuid="c959c39b-d721-41e7-a200-acfe55d80a49" x="0" y="0" width="52" height="11"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{side_COUNT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="f5d907b8-f0ec-4210-ad3e-f8cf99a1c864" x="466" y="0" width="73" height="11"/>
